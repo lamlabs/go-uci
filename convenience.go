@@ -26,6 +26,11 @@ func GetSections(config, secType string) ([]string, bool) {
 	return defaultTree.GetSections(config, secType)
 }
 
+// GetAllSections delegates to the default tree. See Tree for details.
+func GetAllSections(config string) ([]string, bool) {
+	return defaultTree.GetAllSections(config)
+}
+
 // Get delegates to the default tree. See Tree for details.
 func Get(config, section, option string) ([]string, bool) {
 	return defaultTree.Get(config, section, option)
