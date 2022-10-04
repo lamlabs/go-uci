@@ -177,6 +177,20 @@ func (t *tree) GetSections(config string, secType string) ([]string, bool) {
 	return names, true
 }
 
+func (t *tree) GetAllSections(config string) ([]string, bool) {
+	cfg, exists := t.ensureConfigLoaded(config)
+	if !exists {
+		return nil, false
+	}
+
+	names := []string{}
+	for _, s := range cfg.Sections {
+		names = append(names, cfg.sectionName(s))
+	}
+
+	return names, true
+}
+
 func (t *tree) Get(config, section, option string) ([]string, bool) {
 	t.Lock()
 	defer t.Unlock()
